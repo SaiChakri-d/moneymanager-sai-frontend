@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { AuthProvider } from "./context/AuthContext";
-
 import { OperationProvider } from "./context/OperationContext";
 
 // Auth path
@@ -26,24 +24,17 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthLayout />}>
               <Route index element={<Login />} />
-
               <Route path="sign-in" element={<Register />} />
-
               <Route path="forgot-password" element={<ForgotPass />} />
-
               <Route path="new-password/:token" element={<NewPass />} />
-
               <Route
                 path="confirm-account/:token"
                 element={<ConfirmAccount />}
               />
             </Route>
-
             <Route path="/home" element={<PrivateLayout />}>
               <Route index element={<Home />} />
-
               <Route path="transactions" element={<History />} />
-
               <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>

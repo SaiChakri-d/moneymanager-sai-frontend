@@ -13,7 +13,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
 
   return (
     <>
-      <div className="shadow-2xl bg-gray-100 p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
+      <div className="bg-gray-100 p-5 md:p-16 w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto rounded-md shadow-md hover:shadow-xl">
         <Formik
           initialValues={{
             name: "",
@@ -22,7 +22,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
           }}
           validate={({ email, password, name }) => {
             let errors = {};
-
             if (!email) {
               errors.email = "Enter a valid email.";
             } else if (!email_exp.test(email)) {
@@ -44,16 +43,13 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
               errors.password =
                 "Password must contain at least 6 characters and must contain at least one capital letter and one numeric character. ";
             }
-
             return errors;
           }}
+
           onSubmit={async ({ email, name, password }, { resetForm }) => {
             const emailtoLowerCase = email.toLowerCase();
-
             const value = { email: emailtoLowerCase, password, name };
-
             functionUser(value);
-
             resetForm();
           }}
         >
@@ -74,16 +70,14 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
               <h2 className="text-center font-bold capitalize text-2xl md:text-4xl ">
                 {login ? "Login" : "Register "}
               </h2>
-
               <div className="flex flex-col gap-2 text-center">
-                <h2 className="text-2xl font-semibold">👋 Hi!</h2>
-                <p className="">
+                <h2 className="text-2xl font-semibold">👋 Hello! Welcome to chkBudget</h2>
+                <p>
                   {login
                     ? "Login and manage your expenses and income."
                     : "Sign in and manage your expenses and income."}
                 </p>
               </div>
-
               {!login && (
                 <div>
                   <InputsForm
@@ -103,7 +97,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                   </div>
                 </div>
               )}
-
               <div>
                 <InputsForm
                   type="email"
@@ -115,14 +108,12 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                   onBlur={handleBlur}
                   placeholder="Your Email"
                 />
-
                 <div className="mt-1">
                   {errors.email && touched.email && (
                     <AlertInputs error={errors.email} />
                   )}
                 </div>
               </div>
-
               <div>
                 <InputsForm
                   type="password"
@@ -134,19 +125,17 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                   onBlur={handleBlur}
                   placeholder="Your password"
                 />
-
                 <div className="mt-1">
                   {errors.password && touched.password && (
                     <AlertInputs error={errors.password} />
                   )}
                 </div>
               </div>
-
               {login ? (
                 <div className="flex flex-col gap-4">
                   <Link
                     to="/forgot-password"
-                    className="text-gray-400 hover:text-gray-700 duration-100 "
+                    className="text-gray-500 hover:text-gray-700 duration-100 "
                   >
                     Forgot Password?
                   </Link>
@@ -155,8 +144,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
               ) : (
                 <ButtonForm text="Sign In" />
               )}
-
-              <div className=" text-center">
+              <div className="text-center">
                 {login ? (
                   <LinkAuth
                     text={"Don't have an account? "}

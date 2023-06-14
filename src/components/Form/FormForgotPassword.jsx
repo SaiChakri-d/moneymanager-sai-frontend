@@ -13,7 +13,7 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
 
   return (
     <>
-      <div className="shadow-2xl bg-gray-100 p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
+      <div className="bg-gray-100 p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto rounded-md shadow-md hover:shadow-xl">
         <Formik
           initialValues={{
             email: "",
@@ -22,7 +22,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
           }}
           validate={({ email, password, newPassword }) => {
             let errors = {};
-
             if (!sendEmail) {
               if (!password) {
                 errors.password =
@@ -42,12 +41,10 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                 errors.email = "Enter a valid email.";
               }
             }
-
             return errors;
           }}
           onSubmit={async (values, { resetForm }) => {
             const emailtoLowerCase = values.email.toLowerCase();
-
             console.log(values.password);
 
             functionUser({
@@ -70,19 +67,16 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
               className="flex flex-col gap-8"
             >
               {alert.msg && <AlertAuth text={alert.msg} error={alert.error} />}
-
               <div className="flex flex-col gap-2 text-center">
                 <h2 className="text-center font-bold uppercase text-xl underline-offset-1 underline">
                   {sendEmail ? "send email with instructions" : "new password"}
                 </h2>
-
                 <p className="">
                   {sendEmail
                     ? "Regain your Access and DO NOT lose your account."
                     : "Reset your password and DO NOT lose access to your account."}
                 </p>
               </div>
-
               {sendEmail ? (
                 <div>
                   <InputsForm
@@ -95,7 +89,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                     onBlur={handleBlur}
                     placeholder="Your Email"
                   />
-
                   <div className="mt-1">
                     {errors.email && touched.email && (
                       <AlertInputs error={errors.email} />
@@ -121,7 +114,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                       )}
                     </div>
                   </div>
-
                   <div>
                     <InputsForm
                       type="password"
@@ -141,13 +133,11 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                   </div>
                 </div>
               )}
-
               {sendEmail ? (
                 <ButtonForm text="Send Instructions" />
               ) : (
                 <ButtonForm text="New password" />
               )}
-
               <div className=" text-center">
                 {sendEmail && (
                   <div>

@@ -18,26 +18,21 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
         }}
         validate={({ email, name }) => {
           let errors = {};
-
           if (!email) {
             errors.email = "Enter a valid email.";
           } else if (!email_exp.test(email)) {
             errors.email = "Enter a valid email.";
           }
-
           if (!name) {
             errors.name = "Enter a valid name.";
           } else if (!name_exp.test(name)) {
             errors.name = "Enter a valid name.";
           }
-
           return errors;
         }}
         onSubmit={(value) => {
           const { name, email } = value;
-
           const values = { email, name, id };
-
           editProfile(values);
         }}
       >
@@ -55,7 +50,6 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
             className="flex flex-col gap-6 py-10 "
           >
             {alert.msg && <AlertAuth text={alert.msg} error={alert.error} />}
-
             <div className="flex items-center gap-2 mx-auto">
               <div className="h-14 w-14 md:h-20 md:w-20 overflow-hidden shadow-2xl border-2 border-orange-500 rounded-full">
                 {img === "img" || img == undefined ? (
@@ -68,7 +62,6 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
                   <img src={img.url} alt="" className=" object-cover" />
                 )}
               </div>
-
               <div className="w-2/3">
                 <InputsForm
                   type="text"
@@ -87,7 +80,6 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
                 </div>
               </div>
             </div>
-
             <div>
               <InputsForm
                 type="email"
@@ -99,14 +91,12 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
                 onBlur={handleBlur}
                 placeholder="Your Email"
               />
-
               <div className="mt-1">
                 {errors.email && touched.email && (
                   <AlertInputs error={errors.email} />
                 )}
               </div>
             </div>
-
             <ButtonForm text="Save" />
           </form>
         )}

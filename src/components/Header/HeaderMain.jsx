@@ -36,10 +36,9 @@ const Header = ({ money, img, logOut }) => {
                 )}
               </div>
             </Link>
-
             <div
               onClick={() => setViewModal(true)}
-              className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded"
+              className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-lg p-2 border-2 border-cyan-300 rounded-md"
             >
               <p> 💰 My Budget:</p>
               {money?.startsWith("-") ? (
@@ -47,7 +46,6 @@ const Header = ({ money, img, logOut }) => {
               ) : (
                 <h2 className="font-bold">&#8377;{money}</h2>
               )}
-
               <button
                 onClick={() => setViewModal(true)}
                 className="text-green-500 font-bold text-xl md:text-2xl cursor-pointer hover:text-green-700 md:hover:text-3xl duration-300"
@@ -56,7 +54,6 @@ const Header = ({ money, img, logOut }) => {
               </button>
             </div>
           </div>
-
           <div className="hidden md:flex md:flex-row items-center gap-5 font-semibold mt-10 md:mt-0 text-2xl md:text-base">
             <Link
               to="/home"
@@ -64,25 +61,20 @@ const Header = ({ money, img, logOut }) => {
             >
               Home
             </Link>
-
             <Link
               className="hover:text-gray-500 focus:text-gray-500 hover:underline focus:underline"
               to="/home/transactions"
             >
               History
             </Link>
-
             <button
-              className="p-1 px-3 bg-slate-800 text-white rounded-xl 
-                
-                hover:bg-slate-700 duration-200 border-b-2 border border-cyan-300 focus:border-none"
+              className="p-2 bg-pink-800 text-white rounded-2xl shadow-md hover:shadow-lg hover:bg-pink-700 transistion duration-200 ease-in-out"
               onClick={() => logOut()}
             >
               Log out
             </button>
           </div>
         </div>
-
         {/* Navbar mobile*/}
         <button
           className="px-8 text-2xl md:hidden absolute top-10 right-0"
@@ -91,7 +83,6 @@ const Header = ({ money, img, logOut }) => {
           {" "}
           <GiHamburgerMenu />
         </button>
-
         {isMovile && (
           <div className="md:hidden fixed top-0 right-0 w-2/4">
             <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-md h-screen">
@@ -114,7 +105,6 @@ const Header = ({ money, img, logOut }) => {
                   </p>
                   Home
                 </Link>
-
                 <Link
                   to="/home/transactions"
                   className="flex gap-2 items-center text-cyan-300"
@@ -125,11 +115,8 @@ const Header = ({ money, img, logOut }) => {
                   </p>
                   History
                 </Link>
-
                 <button
-                  className="p-2 px-4 bg-slate-800 text-white rounded-xl flex gap-2 items-center 
-                
-                            hover:bg-slate-700 duration-200 border-b-2 border border-cyan-300 focus:border-none"
+                  className="p-2 px-4 bg-slate-800 text-white rounded-xl flex gap-2 items-center hover:bg-slate-700 duration-200 border-b-2 border border-cyan-300 focus:border-none"
                   onClick={() => logOut()}
                 >
                   <p className="text-2xl">
@@ -142,7 +129,6 @@ const Header = ({ money, img, logOut }) => {
           </div>
         )}
       </nav>
-
       {viewModal && <ModalEditBudget setViewModal={setViewModal} />}
     </header>
   );

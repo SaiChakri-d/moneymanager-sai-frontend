@@ -5,7 +5,7 @@ const AlertAuth = ({ error, text }) => {
     <div
       className={`text-sm text-white text-center ${
         error ? "bg-amber-600" : "bg-sky-600"
-      } uppercase text-center  p-3 rounded-md`}
+      } uppercase text-center p-3 rounded-md`}
     >
       <p>{text}</p>
     </div>
