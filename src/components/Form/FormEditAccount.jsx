@@ -56,10 +56,10 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
                   <img
                     src="https://res.cloudinary.com/dkxm9njd6/image/upload/v1656799468/user_fjmynn.png"
                     alt=""
-                    className=" object-cover"
+                    className="object-cover"
                   />
                 ) : (
-                  <img src={img.url} alt="" className=" object-cover" />
+                  <img src={img.url} alt="" className="object-cover" />
                 )}
               </div>
               <div className="w-2/3">
@@ -97,7 +97,7 @@ const FormEditAccount = ({ img, name, email, editProfile, id, alert }) => {
                 )}
               </div>
             </div>
-            <ButtonForm text="Save" />
+            <ButtonForm text="Save Changes" />
           </form>
         )}
       </Formik>

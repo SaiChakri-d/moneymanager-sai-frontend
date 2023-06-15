@@ -22,7 +22,6 @@ const FormAddOperation = ({
   id,
 }) => {
   const { name_exp, budget_exp } = exp_reg;
-
   const [isLoading, setLoading] = useState(false);
 
   return (
@@ -37,7 +36,6 @@ const FormAddOperation = ({
           }}
           validate={({ amount, concept, category, date }) => {
             let errors = {};
-
             if (!amount) {
               errors.amount = "Enter a valid amount.";
             } else if (!budget_exp.test(amount)) {
@@ -45,13 +43,11 @@ const FormAddOperation = ({
             } else if (amount < 0) {
               errors.amount = "Please only numbers greater than 0.";
             }
-
             if (!category) {
               errors.category = "Please choose a category.";
             } else if (!arrCategory.some((e) => [category].includes(e))) {
               errors.category = "Enter a valid category.";
             }
-
             if (!concept) {
               errors.concept = "Enter a valid concept.";
             } else if (concept.length > 30) {
@@ -59,35 +55,26 @@ const FormAddOperation = ({
             } else if (!name_exp.test(concept)) {
               errors.concept = "No special characters allowed.";
             }
-
             if (!date) {
               errors.date = "Enter a valid date.";
             }
-
             return errors;
           }}
           onSubmit={async (values) => {
             if (editing) {
               const { amount, concept, category, date } = values;
               const value = { amount, concept, category, date, _id: id };
-
               functionUser(value);
-
               setLoading(true);
-
               setTimeout(() => {
                 setLoading(false);
-
                 setViewModal(false);
               }, 1500);
-
               return;
             }
 
             const typeOperation = type ? "expense" : "income";
-
             const { amount, concept, category, date } = values;
-
             const value = {
               amount,
               concept,
@@ -98,12 +85,9 @@ const FormAddOperation = ({
             };
 
             functionUser(value);
-
             setLoading(true);
-
             setTimeout(() => {
               setViewModal(false);
-
               setLoading(false);
             }, 1500);
           }}
@@ -118,7 +102,6 @@ const FormAddOperation = ({
           }) => (
             <div className="flex relative">
               {alert.msg && <AlertAuth text={alert.msg} error={alert.error} />}
-
               <form
                 action=""
                 onSubmit={handleSubmit}
@@ -140,7 +123,6 @@ const FormAddOperation = ({
                     )}
                   </div>
                 </div>
-
                 <div className="w-full mx-auto">
                   <SelectForm
                     name="category"
@@ -162,7 +144,6 @@ const FormAddOperation = ({
                     )}
                   </div>
                 </div>
-
                 <div>
                   <InputsForm
                     type="text"
@@ -179,7 +160,6 @@ const FormAddOperation = ({
                     )}
                   </div>
                 </div>
-
                 <div>
                   <InputsForm
                     type="date"
@@ -196,7 +176,6 @@ const FormAddOperation = ({
                     )}
                   </div>
                 </div>
-
                 {!isLoading ? (
                   editing ? (
                     <div className="flex flex-col mt-2 gap-4">

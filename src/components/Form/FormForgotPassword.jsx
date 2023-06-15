@@ -30,7 +30,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                 errors.password =
                   "Password must contain at least 6 characters and must contain at least one capital letter and one numeric character. ";
               }
-
               if (newPassword !== password) {
                 errors.newPassword = "Passwords are not the same.";
               }
@@ -46,7 +45,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
           onSubmit={async (values, { resetForm }) => {
             const emailtoLowerCase = values.email.toLowerCase();
             console.log(values.password);
-
             functionUser({
               email: emailtoLowerCase,
               password: values.password,
@@ -146,7 +144,6 @@ const FormForgotPassword = ({ sendEmail, functionUser, alert }) => {
                       text2="Create one now"
                       nav={"/sign-in"}
                     />
-
                     <LinkAuth
                       text={"You have an account? "}
                       text2="Login now"

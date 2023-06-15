@@ -16,17 +16,16 @@ const FormEditBudget = ({
   user_budget,
 }) => {
   const { budget_exp } = exp_reg;
-
   const [isLoading, setLoading] = useState(false);
 
   return (
     <div className="shadow-2xl bg-gray-100 rounded-md w-full sm:w-2/3 xl:w-1/3 mx-auto my-40 p-5 relative">
-      <h2 className="text-center md:text-2xl underline uppercase font-medium text-stone-800">
+      <h2 className="text-center md:text-2xl uppercase font-medium text-stone-800">
         Change your budget here
       </h2>
-      <div className="border border-yellow-600 md:w-2/3 mx-auto my-5 p-2">
-        <p className="text-center text-xl font-medium ">
-          Your current budget is:
+      <div className="border border-yellow-600 md:w-2/3 mx-auto my-5 p-2 rounded-3xl">
+        <p className="text-center text-xl font-medium">
+          Your current budget is:{" "}
           {user_budget.startsWith("-") ? (
             <span className="text-orange-700 font-bold">
               &#8377;{user_budget}
@@ -58,7 +57,6 @@ const FormEditBudget = ({
           setLoading(true);
           setTimeout(() => {
             setViewModal(false);
-
             setLoading(false);
           }, 2500);
         }}

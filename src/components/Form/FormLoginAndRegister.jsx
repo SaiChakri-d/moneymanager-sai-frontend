@@ -27,7 +27,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
             } else if (!email_exp.test(email)) {
               errors.email = "Enter a valid email.";
             }
-
             if (!login) {
               if (!name) {
                 errors.name = "Enter a valid name.";
@@ -35,7 +34,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                 errors.name = "Enter a valid name.";
               }
             }
-
             if (!password) {
               errors.password =
                 "Password must contain at least 6 characters and must contain at least one capital letter and one numeric character. ";
@@ -45,7 +43,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
             }
             return errors;
           }}
-
           onSubmit={async ({ email, name, password }, { resetForm }) => {
             const emailtoLowerCase = email.toLowerCase();
             const value = { email: emailtoLowerCase, password, name };
@@ -71,7 +68,9 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                 {login ? "Login" : "Register "}
               </h2>
               <div className="flex flex-col gap-2 text-center">
-                <h2 className="text-2xl font-semibold">👋 Hello! Welcome to chkBudget</h2>
+                <h2 className="text-2xl font-semibold">
+                  👋 Hello! Welcome to chkBudget
+                </h2>
                 <p>
                   {login
                     ? "Login and manage your expenses and income."
